@@ -25,7 +25,10 @@ def train_one_epoch(
     model.train()
     data_loader.set_epoch(epoch)
     num_updates = epoch * len(data_loader)
+
+    print("Loop through each batch.")
     for batch in logger.log_every(data_loader, print_freq, header):
+        print(batch)
         im = batch["im"].to(ptu.device)
         seg_gt = batch["segmentation"].long().to(ptu.device)
 

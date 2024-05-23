@@ -41,6 +41,10 @@ class BaseMMSeg(Dataset):
         self.ratio = config.max_ratio
         self.dataset = None
         self.config = self.update_default_config(config)
+
+        print(self.config.data)
+
+
         self.dataset = build_dataset(getattr(self.config.data, f"{self.split}"))
 
     def update_default_config(self, config):
@@ -108,6 +112,8 @@ class BaseMMSeg(Dataset):
 
     def __getitem__(self, idx):
         data = self.dataset[idx]
+
+        print(data)
 
         train_splits = ["train", "trainval"]
 
